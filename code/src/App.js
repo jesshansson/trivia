@@ -1,9 +1,8 @@
+import { TriviaApp } from 'components/Trivia'
 import React from 'react'
 
 export const App = () => {
   return (
-    <div>
-      Find me in src/app.js!
-    </div>
+    <TriviaApp />
   )
 }
