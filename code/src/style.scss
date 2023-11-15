@@ -1,0 +1,58 @@
+// styles.scss
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+div {
+  margin: 20px;
+}
+
+h2 {
+  color: #333;
+}
+
+$primary-color: #3498db;
+$pink-color: pink;
+
+.trivia-app {
+  background-color: $primary-color;
+  padding: 10px;
+  border-radius: 5px;
+
+  h2 {
+    color: pink;
+    font-family: 'Caveat', cursive;
+    font-size: 50px;
+    margin: 20px 0px;
+  }
+
+  button, select {
+    margin: 0px 5px
+  }
+
+  select {
+    border-radius: 1px;
+    margin-left: 10px;
+  }
+
+  button{
+  background-color: $pink-color;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 3px;
+  cursor: pointer;
+  }
+
+  label{
+    color: $pink-color;
+    font-family: 'Caveat', cursive;
+    font-size: 25px;
+  }
+}
+
+//font-family: 'Caveat', cursive;
+//font-family: 'Caveat Brush', cursive;

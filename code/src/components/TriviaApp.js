@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import "../style.scss"
 
 export const TriviaApp = () => {
   const [category, setCategory] = useState('');
@@ -40,7 +41,7 @@ export const TriviaApp = () => {
   };
 
   return (
-    <div>
+    <div className="trivia-app">
       <h2>Trivia Game</h2>
       <label>
         Select category:
