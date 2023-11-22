@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import "../style.scss"
+import '../style.scss';
 
 export const TriviaApp = () => {
   const [category, setCategory] = useState('');
@@ -9,7 +9,9 @@ export const TriviaApp = () => {
 
   const fetchQuestion = async () => {
     try {
-      const response = await fetch(`https://opentdb.com/api.php?amount=1&category=${category}&type=multiple`);
+      const response = await fetch(
+        `https://opentdb.com/api.php?amount=1&category=${category}&type=multiple`
+      );
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
@@ -25,19 +27,27 @@ export const TriviaApp = () => {
   };
 
   const formatQuestion = (question) => {
-    // Use dangerouslySetInnerHTML to render HTML entities correctly
+    if (!question || !question.question || !question.correct_answer || !question.incorrect_answers) {
+      console.error('Invalid question format:', question);
+      return null;
+    }
+
     const formattedQuestion = {
       ...question,
-      question: { __html: question.question }
+      question: { __html: question.question },
+      options: [...question.incorrect_answers, question.correct_answer].sort(() => Math.random() - 0.5),
     };
     return formattedQuestion;
   };
 
   const checkAnswer = () => {
-    const correctAnswer = question.correct_answer.toLowerCase();
-    const userAnswerLower = userAnswer.toLowerCase();
-
-    setIsCorrect(correctAnswer === userAnswerLower);
+    if (question && question.type === 'multiple') {
+      const correctAnswer = question.correct_answer.toLowerCase();
+      const userAnswerLower = userAnswer.toLowerCase();
+      setIsCorrect(correctAnswer === userAnswerLower);
+    } else {
+      setIsCorrect(null); // Handle questions without options differently, for example, you might want to show a different message
+    }
   };
 
   return (
@@ -60,24 +70,26 @@ export const TriviaApp = () => {
           <h3>Question:</h3>
           <p dangerouslySetInnerHTML={question.question}></p>
 
-          <label>
-            Your Answer:
-            <input
-              type="text"
-              value={userAnswer}
-              onChange={(e) => setUserAnswer(e.target.value)}
-            />
-          </label>
+          {question.type === 'multiple' && (
+            <label>
+              Choose an option:
+              <select value={userAnswer} onChange={(e) => setUserAnswer(e.target.value)}>
+                {question.options.map((option, index) => (
+                  <option key={index} value={option} dangerouslySetInnerHTML={{ __html: option }} />
+                ))}
+              </select>
+            </label>
+          )}
 
           <button onClick={checkAnswer}>Check Answer</button>
 
           {isCorrect !== null && (
-            <p>{isCorrect ? 'Correct! 🎉' : 'Incorrect. 😕'} The correct answer was: {question.correct_answer}</p>
+            <p>
+              {isCorrect ? 'Correct! 🎉' : 'Incorrect. 😕'} The correct answer was: {question.correct_answer}
+            </p>
           )}
         </div>
       )}
     </div>
   );
 };
-
-
