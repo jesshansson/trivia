@@ -35,6 +35,10 @@ $blue-color: #1B3C73;
     font-size: 20px;
   }
 
+  .choose-question {
+    padding: 10px;
+  }
+
   h2 {
     color: #1B3C73;
     font-family: 'Caveat', cursive;
@@ -51,6 +55,10 @@ $blue-color: #1B3C73;
     margin-left: 10px;
   }
 
+  label {
+    margin-bottom: 30px ;
+  }
+
   button {
     background-color: $pink-color;
     border: 1px solid black;
@@ -58,6 +66,7 @@ $blue-color: #1B3C73;
     padding: 5px;
     cursor: pointer; 
     border: none; 
+    margin-bottom: 10px;
   
   @media (max-width: 667px) {
     margin: 7px;

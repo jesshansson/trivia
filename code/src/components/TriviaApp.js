@@ -48,6 +48,7 @@ export const TriviaApp = () => {
   return (
     <div className="trivia-app">
       <h2>Trivia Game</h2>
+      <div className='choose-question'>
       <label>
         Select category:
         <select value={category} onChange={(e) => setCategory(e.target.value)}>
@@ -58,7 +59,7 @@ export const TriviaApp = () => {
         </select>
       </label>
       <button onClick={fetchQuestion}>Get Question</button>
-
+</div>
       {question && (
         <div className='question'>
           <h3>Question:</h3>
