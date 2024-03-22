@@ -5,6 +5,8 @@ export const TriviaApp = () => {
   const [category, setCategory] = useState('');
   const [question, setQuestion] = useState(null);
   const [isCorrect, setIsCorrect] = useState(null);
+  const [correctCount, setCorrectCount] = useState(0);
+  const [incorrectCount, setIncorrectCount] = useState(0);
 
   const decodeEntities = (html) => {
     var txt = document.createElement('textarea');
@@ -42,7 +44,15 @@ export const TriviaApp = () => {
     const normalizedCorrectAnswer = question.correct_answer.toLowerCase().trim();
     const normalizedSelectedAnswer = decodeEntities(selectedAnswer).toLowerCase().trim();
 
-    setIsCorrect(normalizedCorrectAnswer === normalizedSelectedAnswer);
+    const result = normalizedCorrectAnswer === normalizedSelectedAnswer;
+    setIsCorrect(result);
+
+    // Update correct or incorrect count based on the result
+    if (result) {
+      setCorrectCount(prevCount => prevCount + 1);
+    } else {
+      setIncorrectCount(prevCount => prevCount + 1);
+    }
   };
 
   return (
@@ -78,6 +88,12 @@ export const TriviaApp = () => {
           )}
         </div>
       )}
+       {/* Display the count of correct and incorrect answers */}
+       <div className="scoreboard">
+        <p>Correct Answers: {correctCount}</p>
+        <p>Incorrect Answers: {incorrectCount}</p>
+      </div>
+
     </div>
   );
 };
