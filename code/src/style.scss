@@ -1,11 +1,25 @@
-// styles.scss
+
+$primary-color: #3498db;
+$pink-color: pink;
+$blue-color: #1B3C73;
+
+
+html, body {
+  height: 100%; 
+  margin: 0; 
+  padding: 0; 
+  overflow: hidden;
+}
+
+
 body {
   background-image: url("assets/bg.jpg") ;
   background-size: cover;
   background-repeat: no-repeat;
-  height: 100vh;
+  background-position: center center; 
   font-family: 'Arial', sans-serif;
- // background-color: #f0f0f0;
+  color: $blue-color;
+  font-weight: 600;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -26,15 +40,12 @@ h2 {
   margin-top: 20px;
   border-radius: 5px; 
   background-color: rgba(255, 192, 203, 0.2);
-
 }
 
-$primary-color: #3498db;
-$pink-color: pink;
-$blue-color: #1B3C73;
 
 .trivia-app {
   background-color: $primary-color;
+  box-shadow: 10px 11px 26px 0px $blue-color;
   padding: 10px;
   border-radius: 5px;
   text-align: center;
@@ -47,22 +58,24 @@ $blue-color: #1B3C73;
 
   .choose-question {
     padding: 10px;
+    
   }
 
   h2 {
-    color: #1B3C73;
+    color: $blue-color;
     font-family: 'Caveat', cursive;
     font-size: 50px;
     margin: 20px 0px;
   }
 
   button, select {
-    margin: 0px 5px
+    margin: 0px 5px;
   }
 
   select {
     border-radius: 1px;
     margin-left: 10px;
+    padding: 4px;
   }
 
   label {
@@ -77,9 +90,11 @@ $blue-color: #1B3C73;
     cursor: pointer; 
     border: none; 
     margin-bottom: 10px;
+    font-weight: 600;
   
   @media (max-width: 667px) {
     margin: 7px;
+    font-weight: 400;
     }
   }
 }
