@@ -3,27 +3,31 @@ $primary-color: #3498db;
 $pink-color: pink;
 $blue-color: #1B3C73;
 
-
-html, body {
-  height: 100%; 
-  margin: 0; 
-  padding: 0; 
-  overflow: hidden;
+html {
+  height: 100%; // Ensure the html spans the full viewport height
+  margin: 0;
+  padding: 0;
+  overflow: auto; // Allows scrolling if content exceeds the viewport
 }
 
-
 body {
-  background-image: url("assets/bg.jpg") ;
+  margin: 0;
+  padding: 0;
+  background-image: url("assets/bg.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center center; 
+  background-attachment: fixed; // Keep the background fixed during scroll
+  background-position: center center;
   font-family: 'Arial', sans-serif;
   color: $blue-color;
   font-weight: 600;
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
+  overflow-x: hidden; // Prevent horizontal scrolling
+  min-height: 100vh; // Use viewport height to ensure body covers at least the whole screen
+  display: flex;
+  flex-direction: column;
 }
+
 
 div {
   margin: 20px;
